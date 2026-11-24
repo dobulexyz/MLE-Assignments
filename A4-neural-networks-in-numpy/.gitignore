@@ -1,0 +1,21 @@
+# Python / tooling caches
+__pycache__/
+.mypy_cache/
+.pytest_cache/
+.ruff_cache/
+.venv/
+
+# Generated data and model cache (figures in results/figures/ are tracked)
+/data/raw/*.npz
+/results/models/
+
+# Student submissions
+/submission.json
+
+# Build artifacts (regenerate with `make release`)
+/src_student_backup/
+/.reference_mode
+/src_reference/
+/A4-neural-networks-in-numpy/
+/assignment4.zip
+/grader/grader.pyc

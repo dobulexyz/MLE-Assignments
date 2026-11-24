@@ -1,0 +1,318 @@
+schema_version: 1
+id: a4-neural-networks-in-numpy
+title: "A4: Neural Networks in NumPy"
+description_md: |
+  Run `uv run python submit.py`, then upload submission.json.
+order: 3
+categories:
+  - {id: b-linear, label: "The Linear Layer"}
+  - {id: c-activation, label: "Activation Functions"}
+  - {id: d-loss, label: "Loss Functions"}
+  - {id: e-regularization, label: "Dropout & Regularization"}
+  - {id: f-models, label: "Sequential & MLP"}
+  - {id: g-optim, label: "Optimizers: SGD & Adam"}
+  - {id: h-data-handling, label: "Datasets & DataLoader"}
+  - {id: i-metrics, label: "Evaluation Metrics"}
+  - {id: j-training, label: "Training Loop & Learning Rate"}
+  - {id: k-decision-boundaries, label: "Decision Boundaries"}
+  - {id: l-training-diagnostics, label: "Training Diagnostics"}
+  - {id: m-regression, label: "Regression"}
+  - {id: n-input-scaling, label: "Input Scaling"}
+  - {id: o-hyperparameter-experiments, label: "Optimizer & Regularization Experiments"}
+  - {id: p-weight-visualization, label: "Weight Visualization"}
+tests:
+  - id: linear-init
+    title: "linear init"
+    category: b-linear
+    points: 1
+    expected_hash: "sha256:97ad51778503d1ac4445f60289e5fde264d94af2fc978680bbf89d024cc2e66d"
+  - id: linear-forward
+    title: "linear forward"
+    category: b-linear
+    points: 1
+    expected_hash: "sha256:a6ce6d7fdfeadb0a84996952b355509f816ca0ce4b85ef26b7f52c769f2c19bb"
+  - id: linear-backward
+    title: "linear backward"
+    category: b-linear
+    points: 1
+    expected_hash: "sha256:d7590e4cac8522b85edc887ee7606acb91eab0430e1b31d320c2adbc963e65fc"
+  - id: linear-parameters
+    title: "linear parameters"
+    category: b-linear
+    points: 1
+    expected_hash: "sha256:896056041a0521e54442c0624983ead70c9ae5d376cc20433fd1f9d4f93a8107"
+  - id: relu
+    title: "relu"
+    category: c-activation
+    points: 1
+    expected_hash: "sha256:d6c11985d38f8e93dffdb3d981283d82a7acc44e5b7d1e3ecfec3e79c0534779"
+  - id: leaky-relu
+    title: "leaky relu"
+    category: c-activation
+    points: 1
+    expected_hash: "sha256:3d51a7319d131b21b3470f6177581ca6eb83ff4cde83cbe8603ac3febef80d83"
+  - id: gelu
+    title: "gelu"
+    category: c-activation
+    points: 1
+    expected_hash: "sha256:43ba031c2c610f48b4e7e8f67fc865661f1cf43770aa393144e9d9cead42349d"
+  - id: cross-entropy-forward
+    title: "cross entropy forward"
+    category: d-loss
+    points: 1
+    expected_hash: "sha256:0112dc1b8bdac7dcbc00e7c3ed52e121b31c0f14ab265ad7fe0ebaaad8ea0aba"
+  - id: cross-entropy-backward
+    title: "cross entropy backward"
+    category: d-loss
+    points: 1
+    expected_hash: "sha256:5aa69435fd1411ca150b638ed46745d209bab24aeec48ff30e6ffeb48f842136"
+  - id: cross-entropy-errors
+    title: "cross entropy errors"
+    category: d-loss
+    points: 1
+    expected_hash: "sha256:4fdba4353f8b37126102130d043014eba921f677b1201ccc17ebd9aeae37aa06"
+  - id: mse-forward
+    title: "mse forward"
+    category: d-loss
+    points: 1
+    expected_hash: "sha256:8f6fbc5dc58b12af314a7f9acf22ad12b45e13ca55f9baec3cc4dbe297489d8b"
+  - id: mse-backward
+    title: "mse backward"
+    category: d-loss
+    points: 1
+    expected_hash: "sha256:fb0c868148b023199564f86ed0750151a11daca8f0a62710e5a571f07816d82c"
+  - id: mse-errors
+    title: "mse errors"
+    category: d-loss
+    points: 1
+    expected_hash: "sha256:4fdba4353f8b37126102130d043014eba921f677b1201ccc17ebd9aeae37aa06"
+  - id: dropout-train
+    title: "dropout train"
+    category: e-regularization
+    points: 1
+    expected_hash: "sha256:46f47b735bf7d17cc77c668908f3d84b52281e68e0877276ac4a9d23a7b5233e"
+  - id: dropout-eval
+    title: "dropout eval"
+    category: e-regularization
+    points: 1
+    expected_hash: "sha256:9749d682cc49fcd52b064507a21769d09b2ead4087e389ffa214b0892cda7e2d"
+  - id: dropout-backward
+    title: "dropout backward"
+    category: e-regularization
+    points: 1
+    expected_hash: "sha256:9749d682cc49fcd52b064507a21769d09b2ead4087e389ffa214b0892cda7e2d"
+  - id: dropout-init
+    title: "dropout init"
+    category: e-regularization
+    points: 1
+    expected_hash: "sha256:b5ac5372ab6fd0cbdc8bacd6d3fce7b7593e3179996f036d6603c4ed39e75b22"
+  - id: sequential-forward
+    title: "sequential forward"
+    category: f-models
+    points: 1
+    expected_hash: "sha256:24256f69465c86becfd4508d6f84d09706e4622d3495c1ec1d4a49e7e96e3c9d"
+  - id: sequential-backward
+    title: "sequential backward"
+    category: f-models
+    points: 1
+    expected_hash: "sha256:0ccf7f3a6da7d08af51cb68cdc1b111187acc75485d83d50b414dc84c472125d"
+  - id: sequential-parameters
+    title: "sequential parameters"
+    category: f-models
+    points: 1
+    expected_hash: "sha256:d6edd92e457bea95e2165b565beb5ea766c19a41c12b005b510c492812cc4549"
+  - id: sequential-overfits
+    title: "sequential overfits"
+    category: f-models
+    points: 1
+    expected_hash: "sha256:1c28f2eb0958c3d15db1f0f0e7f2b8998ca2b8f67ab426a1fbb3d561fe76fad9"
+  - id: mlp-structure
+    title: "mlp structure"
+    category: f-models
+    points: 1
+    expected_hash: "sha256:5c93ad559979a6da2cf0ce335cffeaeb078899a1ce770eb6181f524d29c2f579"
+  - id: mlp-dropout
+    title: "mlp dropout"
+    category: f-models
+    points: 1
+    expected_hash: "sha256:ad7a8822b1ab1508b22e7bf1913ceb3a6c77dfe3cf4eab36f61d466689981cbc"
+  - id: mlp-mode
+    title: "mlp mode"
+    category: f-models
+    points: 1
+    expected_hash: "sha256:8b1b25c64d13ba9860371a9e5980e98286fda8724eba8ae910bf152e9075a484"
+  - id: sgd-vanilla
+    title: "sgd vanilla"
+    category: g-optim
+    points: 1
+    expected_hash: "sha256:3add533daa6a8d6b64ba1722be9e062ed95cbfffa4d00c5eec019f10e57eade0"
+  - id: sgd-momentum
+    title: "sgd momentum"
+    category: g-optim
+    points: 1
+    expected_hash: "sha256:000c9a376b453540668ca94283f02ca085b6db5525ef4bcc1b0825cd88456ce1"
+  - id: sgd-weight-decay
+    title: "sgd weight decay"
+    category: g-optim
+    points: 1
+    expected_hash: "sha256:000c9a376b453540668ca94283f02ca085b6db5525ef4bcc1b0825cd88456ce1"
+  - id: adam
+    title: "adam"
+    category: g-optim
+    points: 1
+    expected_hash: "sha256:124ef21c2e0eea713d0cd11b7f010af48bab0225734a3cad01517ea5fbf61982"
+  - id: dataset
+    title: "dataset"
+    category: h-data-handling
+    points: 1
+    expected_hash: "sha256:77439b6a682dce25f5da71f844046e43988d22d65ef32bce4652aac6c9031a60"
+  - id: dataloader-batching
+    title: "dataloader batching"
+    category: h-data-handling
+    points: 1
+    expected_hash: "sha256:378c52ee81b17c4769a857f97b0ef4d55509d833490210edcfd2fa5025eada9f"
+  - id: dataloader-shuffle
+    title: "dataloader shuffle"
+    category: h-data-handling
+    points: 1
+    expected_hash: "sha256:46f47b735bf7d17cc77c668908f3d84b52281e68e0877276ac4a9d23a7b5233e"
+  - id: accuracy
+    title: "accuracy"
+    category: i-metrics
+    points: 1
+    expected_hash: "sha256:8f3f74b08788dd93edf25c50c1cc2416a05cabba68aefc5f3c94d8bf3f19f73f"
+  - id: confusion-matrix-update
+    title: "confusion matrix update"
+    category: i-metrics
+    points: 1
+    expected_hash: "sha256:9512f1d7dfd899ab4e4c6ce1ab43ff052aa7e8033c7ece9e36cb433f556e44b9"
+  - id: confusion-matrix-metrics
+    title: "confusion matrix metrics"
+    category: i-metrics
+    points: 1
+    expected_hash: "sha256:d9926547d22d9555915816166a4afdebceb24a49887540325776426fc20863e0"
+  - id: run-epoch
+    title: "run epoch"
+    category: j-training
+    points: 1
+    expected_hash: "sha256:5e0327acaa61ad93792e8299fc75ca1217f3b9dc3cf90275cf68f20540538633"
+  - id: train-loop
+    title: "train loop"
+    category: j-training
+    points: 1
+    expected_hash: "sha256:b52a01fbb4a261a24bf940d2cc333cf1bdba878bd8e3324c506992c9f49d234f"
+  - id: train-convergence
+    title: "train convergence"
+    category: j-training
+    points: 1
+    expected_hash: "sha256:6fb086d658332a43050dd1aed9319ebcd7f90fd0b8be7a458b4969662d073664"
+  - id: j-best-lr
+    title: "j best lr"
+    category: j-training
+    points: 1
+    expected_hash: "sha256:e3c00d53b10a49e4cfb267933764a0cf0d5db3f7ec1dcbcb05b7f3f8a2626af6"
+  - id: j-lr-001-underfits
+    title: "j lr 001 underfits"
+    category: j-training
+    points: 1
+    expected_hash: "sha256:1c28f2eb0958c3d15db1f0f0e7f2b8998ca2b8f67ab426a1fbb3d561fe76fad9"
+  - id: j-lr-10-unstable
+    title: "j lr 10 unstable"
+    category: j-training
+    points: 1
+    expected_hash: "sha256:1c28f2eb0958c3d15db1f0f0e7f2b8998ca2b8f67ab426a1fbb3d561fe76fad9"
+  - id: k-observations
+    title: "k observations"
+    category: k-decision-boundaries
+    points: 1
+    expected_hash: "sha256:d750d709314de02c6f9b0fec972b4bf187527440e99fb0e0bfb51a7e1c7bb06b"
+  - id: k-num-datasets-linear-solves
+    title: "k num datasets linear solves"
+    category: k-decision-boundaries
+    points: 1
+    expected_hash: "sha256:080a9ed428559ef602668b4c00f114f1a11c3f6b02a435f0bdc154578e4d7f22"
+  - id: k-smallest-arch-solving-checkerboard
+    title: "k smallest arch solving checkerboard"
+    category: k-decision-boundaries
+    points: 1
+    expected_hash: "sha256:3f7a22d98fecfaac308af9c358aaebd2754e384ac9c456cc00ec71cd41546f17"
+  - id: l-observations
+    title: "l observations"
+    category: l-training-diagnostics
+    points: 1
+    expected_hash: "sha256:31ce0a6916e79ac372ea697aa54f38467603eca8d91f6bb2b69618eece9c2dd4"
+  - id: l-condition-with-highest-peak-grad-norm
+    title: "l condition with highest peak grad norm"
+    category: l-training-diagnostics
+    points: 1
+    expected_hash: "sha256:f86c08fbe067b0a4e7d9e4c56abf2db3cfaf33536a4da484a69ebe17820e3faa"
+  - id: l-condition-with-lowest-update-magnitude
+    title: "l condition with lowest update magnitude"
+    category: l-training-diagnostics
+    points: 1
+    expected_hash: "sha256:2b61db12cecf6fd8dc821c7a5168d5c490fbb3e55be6a2615fafffb9b40e3323"
+  - id: l-condition-with-lowest-gradient-norm
+    title: "l condition with lowest gradient norm"
+    category: l-training-diagnostics
+    points: 1
+    expected_hash: "sha256:182022b4953a5bb406098db3f6daff85485ba05b021b7c4a394c394480f9141e"
+  - id: m-observations
+    title: "m observations"
+    category: m-regression
+    points: 1
+    expected_hash: "sha256:375df2321f69c67195243d29ae33b3cee9f48004a48d052683235e75db0ed32a"
+  - id: m-best-generalizing-config
+    title: "m best generalizing config"
+    category: m-regression
+    points: 1
+    expected_hash: "sha256:01b18d8d9a43316873ae79f2f095203fa9837f5496045c0f6155d4617c250a0d"
+  - id: m-lowest-train-mse-config
+    title: "m lowest train mse config"
+    category: m-regression
+    points: 1
+    expected_hash: "sha256:d6bfc5df00a0ddecaeb37caa2e76b27e2163ba0eceecbe9dcab9fda91599a036"
+  - id: n-observations
+    title: "n observations"
+    category: n-input-scaling
+    points: 1
+    expected_hash: "sha256:3a63bd944c3635d31debc8df42c4ef3ffe121016c8be48e52dff3fa6d860a3ad"
+  - id: n-best-lr-for-raw
+    title: "n best lr for raw"
+    category: n-input-scaling
+    points: 1
+    expected_hash: "sha256:ecc67cf3f3c00b18cd605022511cec5f476d27fb02599b2b8fe19ceb0a922219"
+  - id: n-best-scaling
+    title: "n best scaling"
+    category: n-input-scaling
+    points: 1
+    expected_hash: "sha256:e7aa931428bd612e4c5319d44556fdd3aee279f38b18a811d579f0bc4a70ce53"
+  - id: o-observations
+    title: "o observations"
+    category: o-hyperparameter-experiments
+    points: 1
+    expected_hash: "sha256:b583a7960e04054f81ec3be61f9a627a4f9808c6ebb19cafd439cad56ad836b3"
+  - id: o-fastest-optimizer
+    title: "o fastest optimizer"
+    category: o-hyperparameter-experiments
+    points: 1
+    expected_hash: "sha256:aee98a282fae34f57e53dd3bde71da343cec9a0849803947e8881d3c8fc14003"
+  - id: o-best-regularizer-for-val
+    title: "o best regularizer for val"
+    category: o-hyperparameter-experiments
+    points: 1
+    expected_hash: "sha256:e6274907084442774e06c920204da9600bdc13efcf1b9c6a002cc4deb61ff396"
+  - id: p-observations
+    title: "p observations"
+    category: p-weight-visualization
+    points: 1
+    expected_hash: "sha256:e32d0cd801484298884628a7262ba9f61ed27d81f7e815e3ea6e252209026c84"
+  - id: p-filter-image-side
+    title: "p filter image side"
+    category: p-weight-visualization
+    points: 1
+    expected_hash: "sha256:66e7ff50b3d423ac1608a1c537613e5b87b1f516283b7bb49c91cd6af1bb412f"
+  - id: p-more-units-higher-test-accuracy
+    title: "p more units higher test accuracy"
+    category: p-weight-visualization
+    points: 1
+    expected_hash: "sha256:1c28f2eb0958c3d15db1f0f0e7f2b8998ca2b8f67ab426a1fbb3d561fe76fad9"
